@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Frontend Developer Portfolio — crafting beautiful digital experiences.">
+  <title>Portfolio | Frontend Developer</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>K</text></svg>">
+</head>
+<body>
+  <!-- Site Preloader: Staggered Strip Reveal -->
+  <div id="preloader" class="preloader">
+    <div class="loader-strip"></div>
+    <div class="loader-strip"></div>
+    <div class="loader-strip"></div>
+    <div class="loader-strip"></div>
+    <div class="loader-strip"></div>
+    <div class="loader-strip"></div>
+    <div class="loader-strip"></div>
+    <div class="loader-strip"></div>
+    <div class="loader-strip"></div>
+    <div class="loader-strip"></div>
+  </div>
+
+
+  <!-- ========== BOTTOM DOCK NAVIGATION ========== -->
+  <nav class="dock-nav" id="dockNav">
+    <a href="#hero" class="dock-item dock-home" data-tooltip="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+    </a>
+    <a href="#about" class="dock-item" data-tooltip="About">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+    </a>
+    <a href="#projects" class="dock-item" data-tooltip="Projects">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+      </svg>
+    </a>
+    <a href="#skills" class="dock-item" data-tooltip="Skills">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+    </a>
+    <a href="#contact" class="dock-item" data-tooltip="Contact">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="18" cy="5" r="3"/>
+        <circle cx="6" cy="12" r="3"/>
+        <circle cx="18" cy="19" r="3"/>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+      </svg>
+    </a>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero" id="hero">
+    <!-- Hero image -->
+
+
+
+    <!-- Bottom headings: FRONTEND left, DEVELOPER right -->
+
+    <!-- Main Hero Text -->
+    <div class="hero-main-content">
+      <div class="hero-portrait-side">
+        <div class="hero-portrait-container">
+          <img src="Homeportrait.png" alt="Komalpreet Kaur" class="hero-portrait">
+        </div>
+        <div class="hero-cta-btns">
+          <a href="#" id="resumeBtn" class="hero-btn">Resume</a>
+          <a href="#contact" class="hero-btn hero-btn--outline">Contact</a>
+        </div>
+      </div>
+      <h1 class="hero-name reveal">
+        <span class="name-line">Komalpreet</span>
+        <span class="name-line">Kaur</span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT SECTION ========== -->
+  <section class="about" id="about">
+    <div class="about-text reveal">
+      <p><strong>Hey, I’m Komal</strong><br>I work with data, teach machines how to learn, and occasionally argue with models that refuse to converge.</p>
+      <p>Most days, I’m building things at the intersection of <strong>AI and data science</strong> — from models that can see and reason to systems that try to make sense of <strong>messy, real-world data</strong>.</p>
+      <p>I enjoy finding patterns where there shouldn’t be any, turning raw data into something useful, and building projects that feel just a little bit like <strong>science fiction</strong>.</p>
+      <p>Also a fan of <strong>clean pipelines</strong>, <strong>clever ideas</strong>, and that one moment when everything finally works (after breaking 17 times).</p>
+      <p>Got something interesting? <strong>Let’s build it</strong> — or at least debug it together.</p>
+    </div>
+    <div class="about-terminal reveal">
+      <div class="terminal-header">
+        <span class="dot close"></span>
+        <span class="dot minimize"></span>
+        <span class="dot maximize"></span>
+        <span class="terminal-title">train_model.py</span>
+      </div>
+      <div class="terminal-body" id="term-body">
+        <!-- Logs injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WORKS SECTION ========== -->
+  <section class="works" id="projects">
+    <h2 class="works-header reveal">WORKS</h2>
+    <div class="works-list">
+      <div class="work-item reveal" data-preview="1">
+        <div class="work-header">
+          <span class="work-name">Soma</span>
+          <span class="work-tech">Python, LangGraph, ChromaDB, Neo4j</span>
+        </div>
+        <div class="work-details">
+          <div class="work-desc">
+            <p>Cognitive AI System.</p>
+            <p style="margin-top: 1rem; font-style: italic; color: var(--text-light); opacity: 0.85;">🚧 Currently brewing in the lab! The machine is working overtime, and so am I.</p>
+            <div class="work-links">
+              <a href="https://github.com/Kobuilds/SOMA" class="work-btn" target="_blank" rel="noopener">Source Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="work-item reveal" data-preview="2">
+        <div class="work-header">
+          <span class="work-name">Specula</span>
+          <span class="work-tech">PyTorch, OpenCV, Hugging Face Transformers, FastAPI</span>
+        </div>
+        <div class="work-details">
+          <div class="work-desc">
+            <p>Built a multi-method deepfake detection system combining CNNs, frequency analysis, noise estimation, and metadata forensics.</p>
+            <p style="margin-top: 1rem;">Provides explainable outputs using visual heatmaps and scoring to justify predictions.</p>
+            <div class="work-links">
+              <a href="https://komalsohal-specula.hf.space/" class="work-btn" target="_blank" rel="noopener">Live Demo</a>
+              <a href="https://github.com/Kobuilds/Specula" class="work-btn" target="_blank" rel="noopener">Source Code</a>
+            </div>
+          </div>
+          <img src="specula.png" alt="Specula Project" class="work-detail-img">
+        </div>
+      </div>
+      <div class="work-item reveal" data-preview="3">
+        <div class="work-header">
+          <span class="work-name">Qlothi</span>
+          <span class="work-tech">PyTorch, Hugging Face Transformers, FastAPI, Playwright</span>
+        </div>
+        <div class="work-details">
+          <div class="work-desc">
+            <p>Developed an AI-powered Chrome extension that segments clothing items from images using transformer-based vision models.</p>
+            <p style="margin-top: 1rem;">Integrates visual search to help users discover similar fashion products directly from images.</p>
+            <div class="work-links">
+              <a href="https://github.com/Kobuilds/Qlothi" class="work-btn" target="_blank" rel="noopener">Source Code</a>
+            </div>
+          </div>
+          <img src="qlothi.png" alt="Qlothi Project" class="work-detail-img">
+        </div>
+      </div>
+      <div class="work-item reveal" data-preview="4">
+        <div class="work-header">
+          <span class="work-name">Earnomly</span>
+          <span class="work-tech">Scikit-learn, Pandas, Streamlit, Plotly</span>
+        </div>
+        <div class="work-details">
+          <div class="work-desc">
+            <p>Created an interactive ML dashboard to analyze socioeconomic data and predict income levels using classification models.</p>
+            <p style="margin-top: 1rem;">Includes EDA, clustering, and real-time prediction with performance evaluation metrics.</p>
+            <div class="work-links">
+              <a href="https://github.com/Kobuilds/Earnomly" class="work-btn" target="_blank" rel="noopener">Source Code</a>
+            </div>
+          </div>
+          <img src="earnomly.png" alt="Earnomly Project" class="work-detail-img">
+        </div>
+      </div>
+      <div class="work-item reveal" data-preview="5">
+        <div class="work-header">
+          <span class="work-name">Women’s Safety Dashboard</span>
+          <span class="work-tech">Power BI, DAX, Power Query, Data Modeling</span>
+        </div>
+        <div class="work-details">
+          <div class="work-desc">
+            <p>Built a data analytics dashboard to explore crime trends using star schema modeling and advanced DAX calculations.</p>
+            <p style="margin-top: 1rem;">Delivers insights through geospatial analysis, trend tracking, and interactive visualizations.</p>
+            <div class="work-links">
+              <a href="https://github.com/Kobuilds/WomenSafe" class="work-btn" target="_blank" rel="noopener">Source Code</a>
+            </div>
+          </div>
+          <img src="womensafe.png" alt="Women's Safety Dashboard" class="work-detail-img">
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ========== SKILLS (MY STACK) SECTION ========== -->
+  <section class="stack" id="skills">
+    <h2 class="works-header">MY STACK</h2>
+    
+    <div class="stack-grid">
+      <!-- Row 1 -->
+      <div class="stack-row row-even">
+        <div class="stack-card">
+          <div class="icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++"></div>
+          <div class="stack-info"><h3>Core Languages</h3><p>C++, Python, JavaScript, TypeScript, Java</p></div>
+        </div>
+        <div class="stack-card">
+          <div class="icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg" alt="PyTorch"></div>
+          <div class="stack-info"><h3>Machine Learning</h3><p>PyTorch, Scikit-learn</p></div>
+        </div>
+      </div>
+      <!-- Row 2 -->
+      <div class="stack-row row-odd">
+        <div class="stack-card">
+          <div class="icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original.svg" alt="Jupyter"></div>
+          <div class="stack-info"><h3>LLMs & GenAI</h3><p>LangChain, Hugging Face, OpenAI APIs</p></div>
+        </div>
+        <div class="stack-card">
+          <div class="icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="MongoDB"></div>
+          <div class="stack-info"><h3>Retrieval Systems</h3><p>Vector/Graph RAG, FAISS, ChromaDB</p></div>
+        </div>
+      </div>
+      <!-- Row 3 -->
+      <div class="stack-row row-even">
+        <div class="stack-card">
+          <div class="icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg" alt="OpenCV"></div>
+          <div class="stack-info"><h3>Computer Vision</h3><p>OpenCV, Vision Transformers, CNNs</p></div>
+        </div>
+        <div class="stack-card">
+          <div class="icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" alt="FastAPI"></div>
+          <div class="stack-info"><h3>Model Deployment</h3><p>FastAPI, REST APIs</p></div>
+        </div>
+      </div>
+      <!-- Row 4 -->
+      <div class="stack-row row-odd">
+        <div class="stack-card">
+          <div class="icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git"></div>
+          <div class="stack-info"><h3>Tools & DevOps</h3><p>Git, GitHub, Docker, Linux, Bash</p></div>
+        </div>
+        <div class="stack-card">
+          <div class="icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg" alt="Pandas"></div>
+          <div class="stack-info"><h3>Data Processing</h3><p>Pandas, NumPy</p></div>
+        </div>
+      </div>
+      <!-- Row 5 -->
+      <div class="stack-row row-even">
+        <div class="stack-card">
+          <div class="icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="AWS"></div>
+          <div class="stack-info"><h3>Cloud & Serving</h3><p>AWS, Hugging Face Spaces</p></div>
+        </div>
+        <div class="stack-card">
+          <div class="icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="Databases"></div>
+          <div class="stack-info"><h3>Databases</h3><p>ChromaDB, Neo4j, MySQL, SQLite, PostgreSQL, MongoDB</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Magic section removed per user request -->
+
+  <!-- ========== CONTACT / FOOTER ========== -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-top">
+        <div>
+          <h3 class="contact-question reveal">
+            What if we worked <strong>together</strong> ?
+          </h3>
+        </div>
+        <div class="contact-socials reveal">
+          <a href="https://www.linkedin.com/in/komalpreetkaur-k/" target="_blank" rel="noopener">Linkedin</a>
+          <a href="https://github.com/Kobuilds" target="_blank" rel="noopener">Github</a>
+          <a href="https://x.com/KoBuilds2811" target="_blank" rel="noopener">X</a>
+          <a href="https://leetcode.com/u/Sohal2811/" target="_blank" rel="noopener">Leetcode</a>
+        </div>
+      </div>
+
+      <div class="contact-middle reveal">
+        <p class="contact-message">
+          That's it, you've reached the end of my portfolio. <strong>Thanks for visiting :)</strong><br>
+          If you enjoyed the journey, let's make the sequel together—whether it's a
+          project or just a chat about your favorite Book.
+        </p>
+
+        <div class="contact-email-row">
+          <a href="mailto:kaurkomalpreetsohal@gmail.com" class="contact-email">kaurkomalpreetsohal@gmail.com</a>
+        </div>
+      </div>
+
+      <span class="contact-edition">2026 © Edition</span>
+
+      <div class="contact-giant">GETINTOUCH!</div>
+    </div>
+  </section>
+
+  <!-- Resume Modal -->
+  <div id="resumeModal" class="modal">
+    <div class="modal-content reveal">
+      <div class="modal-header">
+        <div class="terminal-dots">
+          <span class="dot close"></span>
+          <span class="dot minimize"></span>
+          <span class="dot maximize"></span>
+        </div>
+        <h2 class="modal-title">RESUME</h2>
+        <div class="modal-actions">
+          <a href="resume.pdf" download="Komalpreet_Kaur_Resume.pdf" class="modal-download-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span>DOWNLOAD</span>
+          </a>
+          <button class="modal-close" id="closeModal">&times;</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <iframe src="resume.pdf#zoom=100" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

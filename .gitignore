@@ -1,0 +1,9 @@
+.DS_Store
+node_modules/
+.env
+*.log
+.terraform/
+.vagrant/
+.vscode/
+*.pyc
+__pycache__/
