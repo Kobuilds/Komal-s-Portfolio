@@ -1469,52 +1469,118 @@ body.loading {
 }
 
 @media (max-width: 768px) {
+  /* --- Global Mobile Overrides --- */
+  .section {
+    min-height: 100vh;
+    height: auto;
+    padding: 6rem 1.5rem 4rem;
+  }
+
+  /* --- Hero Mobile --- */
+  .hero-main-content {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    padding: 12vh 1rem 6rem;
+    height: auto;
+    min-height: 100vh;
+    margin-top: 0;
+  }
+
+  .hero-portrait-side {
+    transform: none;
+    margin-left: 0;
+    width: 100%;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .hero-portrait {
+    height: auto;
+    max-height: 35vh;
+    width: auto;
+  }
+
+  .hero-portrait-line {
+    width: 80%;
+    margin-top: -1.5rem;
+  }
+
+  .hero-name {
+    transform: none;
+    align-items: center;
+    text-align: center;
+    font-size: clamp(3rem, 14vw, 5rem);
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .hero-cta-btns {
+    width: 100%;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .hero-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    min-width: 120px;
+    text-align: center;
+  }
+
+  /* --- Navigation & UI --- */
+  .top-hire-btn {
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+
   .dock-nav {
-    bottom: 1rem;
+    bottom: 1.5rem;
     gap: 0.4rem;
-    padding: 0.5rem 0.8rem;
+    padding: 0.6rem;
+    width: auto;
+    max-width: 90vw;
   }
 
   .dock-item {
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
   }
 
-  .dock-item svg {
-    width: 17px;
-    height: 17px;
+  /* --- Hire Me Modal Mobile --- */
+  .modal-content {
+    width: 92vw;
+    padding: 3rem 1.5rem;
   }
 
-  .hero-titles h2 {
-    font-size: clamp(3rem, 15vw, 6rem);
+  .contact-title {
+    font-size: 1.8rem;
+    line-height: 1.2;
   }
 
-  .hero-titles {
-    flex-direction: column;
-    gap: 0;
-    padding: 0 1rem 1rem;
+  .social-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
   }
 
+  /* --- Other Sections --- */
   .about {
-    padding: 4rem 1.5rem;
+    padding: 2rem 0;
   }
 
-  .works {
-    padding: 4rem 1.5rem;
+  .works-list {
+    margin-top: 2rem;
   }
 
   .work-item {
-    padding: 1rem 0.8rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.3rem;
+    padding: 1.5rem 0.5rem;
   }
 
-  .work-preview {
-    display: none;
+  .contact-title {
+    font-size: clamp(2.5rem, 10vw, 4rem);
   }
-
-  .contact {
+}
     padding: 3rem 1.5rem 1rem;
   }
 
