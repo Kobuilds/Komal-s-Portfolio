@@ -1421,8 +1421,8 @@ body.loading {
 .stack-card {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  padding: 3rem;
+  gap: 1.5rem; /* Reduced from 2rem to pull icon closer */
+  padding: 1.5rem 2rem; /* Reduced from 3rem to eliminate vertical emptiness */
   background: transparent;
   border-right: 1px solid var(--accent-border);
   border-bottom: 1px solid var(--accent-border);
