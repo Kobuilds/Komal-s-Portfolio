@@ -735,7 +735,7 @@ body.loading {
   position: relative;
   z-index: 2;
   margin-left: 3vw;
-  transform: translate(-5rem, -7.5rem); /* Lowered slightly as per user request */
+  transform: translate(-5rem, -12rem); /* Synchronized with name for top alignment */
 }
 
 .hero-portrait-container {
@@ -835,8 +835,12 @@ body.loading {
   color: var(--text-main);
   text-transform: uppercase;
   text-align: right;
-  margin-top: -35rem; /* Extremely shifted using margin to avoid conflict with .reveal transforms */
+  margin-top: -12rem; /* Synchronized with portrait for top alignment */
   transform: translateX(5rem); 
+}
+
+.hero-name.visible {
+  transform: translateX(5rem) translateY(0) !important;
 }
 /* ============================================
    HALFTONE TRANSITION
