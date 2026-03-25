@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const cy = h * 0.45;
 
       // Get color from CSS variable for theme support
-      const dotColor = getComputedStyle(document.documentElement).getPropertyValue('--text-main').trim() || '#1D4B39';
+      const dotColor = getComputedStyle(document.documentElement).getPropertyValue('--text-main').trim() || '#333333';
 
       for (let x = 0; x < w; x += dotSpacing) {
         for (let y = 0; y < h; y += dotSpacing) {
@@ -393,7 +393,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Cache theme color to avoid 15,000 DOM queries per second (performance fix)
-    const themeColor = getComputedStyle(document.documentElement).getPropertyValue('--text-main').trim() || '#1D4B39';
+    const themeColor = getComputedStyle(document.documentElement).getPropertyValue('--text-main').trim() || '#333333';
 
     let mouse = { x: -1000, y: -1000 };
 
