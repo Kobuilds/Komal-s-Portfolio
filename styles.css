@@ -1318,7 +1318,7 @@ body.loading {
   display: grid;
   grid-template-columns: 1fr; /* Single column for centering children */
   align-items: flex-start;
-  gap: 4rem;
+  gap: 1.5rem; /* Reduced gap to pull email up */
   margin-bottom: 6rem;
   width: 100%;
 }
@@ -1340,7 +1340,6 @@ body.loading {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 1rem;
   margin-left: 0;
   width: 100%;
   transform: translateX(30rem);
