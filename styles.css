@@ -844,65 +844,99 @@ body.loading {
 }
 
 /* ============================================
-   PHYSICS SANDBOX (GAP)
+   GLITCH BOT CONSTRUCTOR (GAP)
    ============================================ */
-.physics-gap {
+.bot-gap {
   height: 12.5rem; /* Standardized gap */
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 50px; /* Space between shapes */
   position: relative;
   margin-top: -2rem;
   margin-bottom: -2rem;
   z-index: 10;
 }
 
-.draggable-shape {
-  width: 35px;
-  height: 35px;
-  cursor: grab;
+.bot-thread-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bot-thread {
+  width: 1px;
+  height: 150px; /* Resting lowered length */
+  background: rgba(29, 75, 57, 0.4);
+  transition: height 4s ease-in-out; /* Slow deliberate drop */
+}
+
+.bot-gap:hover .bot-thread {
+  height: 10px; /* Fast scurry up */
+  transition: height 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glitch-bot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.bot-body {
+  width: 18px;
+  height: 14px;
   background: var(--text-main);
-  box-shadow: 0 0 10px rgba(29, 75, 57, 0.4);
-  transition: box-shadow 0.2s ease;
-  animation: floatShape 4s ease-in-out infinite alternate;
-  z-index: 100;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 12px rgba(29, 75, 57, 0.5);
+  position: relative;
+  z-index: 2;
 }
 
-.draggable-shape:active {
-  cursor: grabbing;
-  box-shadow: 0 0 25px var(--text-main);
-}
-
-.shape-circle {
+.bot-eye {
+  width: 4px;
+  height: 4px;
+  background: var(--bg);
   border-radius: 50%;
-  animation-delay: 0s;
+  animation: botBlink 3s infinite;
 }
 
-.shape-square {
-  animation-delay: 1.5s;
+.bot-legs {
+  display: flex;
+  gap: 10px;
+  margin-top: -2px; /* Pull beneath body */
+  z-index: 1;
 }
 
-.shape-triangle {
-  background: transparent;
-  width: 0; 
-  height: 0; 
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-bottom: 35px solid var(--text-main);
-  box-shadow: none;
-  filter: drop-shadow(0 0 10px rgba(29, 75, 57, 0.4));
-  animation-delay: 3s;
+.leg {
+  width: 2px;
+  height: 8px;
+  background: var(--text-main);
+  border-radius: 1px;
+  transform-origin: top;
 }
 
-.shape-triangle:active {
-  filter: drop-shadow(0 0 25px var(--text-main));
+/* Leg wiggles when scurrying (on gap hover) */
+.bot-gap:hover .leg:nth-child(1) {
+  animation: legWiggle 0.1s infinite alternate;
+}
+.bot-gap:hover .leg:nth-child(2) {
+  animation: legWiggle 0.1s infinite alternate-reverse;
 }
 
-@keyframes floatShape {
-  0% { transform: translateY(-15px) rotate(0deg); }
-  100% { transform: translateY(15px) rotate(20deg); }
+@keyframes botBlink {
+  0%, 96%, 98% { opacity: 1; transform: scaleY(1); }
+  97% { opacity: 0; transform: scaleY(0.1); }
+}
+
+@keyframes legWiggle {
+  0% { transform: rotate(-25deg); }
+  100% { transform: rotate(25deg); }
 }
 
 .scroll-indicator {

@@ -374,80 +374,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Physics Sandbox (Feed the Swarm) Interaction ---
-  const shapes = document.querySelectorAll('.draggable-shape');
-  const aboutSection = document.getElementById('about');
+  // --- Glitch Bot Interaction ---
+  const glitchBot = document.querySelector('.glitch-bot');
+  const aboutCanvas = document.getElementById('aboutCanvas');
   
-  shapes.forEach(shape => {
-    let isDragging = false;
-    let startX, startY;
-
-    shape.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      e.preventDefault(); // Prevent text selection
+  if (glitchBot && aboutCanvas) {
+    glitchBot.addEventListener('click', (e) => {
+      // Calculate position explicitly to pass into the swarm canvas
+      const rect = aboutCanvas.getBoundingClientRect();
+      const botRect = glitchBot.getBoundingClientRect();
       
-      // Calculate offset so dragging doesn't jump to top-left of shape
-      const rect = shape.getBoundingClientRect();
-      startX = e.clientX - rect.left;
-      startY = e.clientY - rect.top;
+      const dropX = (botRect.left + (botRect.width / 2)) - rect.left;
+      const dropY = botRect.bottom - rect.top; // Drop from the bottom of the bot
       
-      shape.style.position = 'fixed'; // Float it
-      shape.style.margin = '0';
-      shape.style.animation = 'none'; // Stop floating
+      // Trigger Particle Generation in the Swarm
+      window.dispatchEvent(new CustomEvent('swarmFeed', { detail: { x: dropX, y: dropY } }));
       
-      moveShape(e);
-      document.body.style.cursor = 'grabbing';
-      cursorArrow.style.opacity = '0'; // Hide custom cursor during drag
+      // Visual click feedback
+      glitchBot.style.transform = 'scale(1.2)';
+      setTimeout(() => glitchBot.style.transform = '', 150);
     });
-
-    const moveShape = (e) => {
-      if (!isDragging) return;
-      shape.style.left = `${e.clientX - startX}px`;
-      shape.style.top = `${e.clientY - startY}px`;
-    };
-
-    const stopDrag = (e) => {
-      if (!isDragging) return;
-      isDragging = false;
-      document.body.style.cursor = 'default';
-      cursorArrow.style.opacity = '1';
-      
-      const aboutRect = aboutSection.getBoundingClientRect();
-      const shapeRect = shape.getBoundingClientRect(); // Current dropped position
-
-      // Check if dropped vertically over the About section
-      if (e.clientY > aboutRect.top && e.clientY < aboutRect.bottom) {
-        
-        // Target specifically the canvas area horizontally (roughly the right side)
-        const canvas = document.getElementById('aboutCanvas');
-        if (canvas) {
-          const cRect = canvas.getBoundingClientRect();
-          const dropX = (shapeRect.left + (shapeRect.width / 2)) - cRect.left;
-          const dropY = (shapeRect.top + (shapeRect.height / 2)) - cRect.top;
-
-          // Trigger Swarm Reaction (Feed)
-          window.dispatchEvent(new CustomEvent('swarmFeed', { detail: { x: dropX, y: dropY } }));
-        }
-
-        // Dissolve shape
-        shape.style.transition = 'opacity 0.3s ease';
-        shape.style.opacity = '0';
-        setTimeout(() => {
-           shape.style.display = 'none'; // hide it entirely
-        }, 300);
-
-      } else {
-        // Snap back to origin if not dropped correctly
-        shape.style.position = 'relative';
-        shape.style.left = '';
-        shape.style.top = '';
-        shape.style.animation = ''; // Restore floating
-      }
-    };
-
-    window.addEventListener('mousemove', moveShape);
-    window.addEventListener('mouseup', stopDrag);
-  });
+  }
 
   // --- Interactive Data Swarm Initialization ---
   function initDataSwarm() {
