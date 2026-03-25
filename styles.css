@@ -835,7 +835,7 @@ body.loading {
   color: var(--text-main);
   text-transform: uppercase;
   text-align: right;
-  transform: translate(5rem, -12.5rem); /* Shifted up significantly for transition space */
+  transform: translate(5rem, -7.5rem); /* Aligned with portrait as per user request */
 }
 /* ============================================
    HALFTONE TRANSITION
