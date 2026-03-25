@@ -372,8 +372,8 @@ body.loading {
   position: relative;
   width: 90%;
   max-width: 900px;
-  background: #FCFBF9;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23FCFBF9'/%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  background: var(--bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
   border-radius: 0;
   padding: 4rem;
   display: flex;
@@ -381,15 +381,12 @@ body.loading {
   box-shadow: 0 20px 50px rgba(0,0,0,0.15);
   transform: translateY(30px) scale(0.95);
   transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-  color: #1a1a1a;
+  color: var(--text-main);
   border: 1px solid var(--accent-border);
 }
 
 [data-theme='dark'] .hire-modal-content {
-  background: #121212;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23121212'/%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
-  color: #E0E0E0;
-  border: 1px solid var(--accent-border);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
 
 .hire-modal-overlay.active .hire-modal-content {
@@ -427,38 +424,30 @@ body.loading {
   align-items: center;
   gap: 0.5rem;
   padding: 0.6rem 1.2rem;
-  background: #ffffff;
+  background: var(--bg);
   border: 1px solid var(--accent-border);
   border-radius: 0;
   font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 1px;
-  color: #555;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  color: var(--text-body);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   transform: translate(-50%, -50%);
   animation: floatTag 4s ease-in-out infinite alternate;
-}
-
-[data-theme='dark'] .hire-tag:not(.hire-tag--orange) {
-  background: #1a1a1a;
-  border-color: #333;
-  color: #aaa;
 }
 
 .hire-tag svg {
   width: 14px;
   height: 14px;
-  stroke: #888;
+  stroke: var(--text-main);
 }
 
 .hire-tag--orange {
-  background: #FF5A00 !important;
-  color: #fff !important;
-  border: none !important;
+  background: var(--text-main) !important;
+  color: var(--bg) !important;
   font-size: 0.85rem;
   padding: 0.7rem 1.4rem;
-  box-shadow: 0 6px 15px rgba(255, 90, 0, 0.3);
   z-index: 2;
   animation-delay: -1s;
 }
@@ -488,12 +477,8 @@ body.loading {
 .hire-right p {
   font-family: var(--font-body);
   font-size: 0.95rem;
-  color: #666;
+  color: var(--text-body);
   margin-bottom: 2rem;
-}
-
-[data-theme='dark'] .hire-right p {
-  color: #999;
 }
 
 .hire-actions {
@@ -513,25 +498,15 @@ body.loading {
   font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 1px;
-  color: #1a1a1a;
+  color: var(--text-main);
   text-decoration: none;
   background: transparent;
   transition: all 0.3s ease;
 }
 
-[data-theme='dark'] .hire-action-btn {
-  border-color: #aaa;
-  color: #E0E0E0;
-}
-
 .hire-action-btn:hover {
-  background: #1a1a1a;
-  color: #fff;
-}
-
-[data-theme='dark'] .hire-action-btn:hover {
-  background: #E0E0E0;
-  color: #1a1a1a;
+  background: var(--text-main);
+  color: var(--bg);
 }
 
 .hire-action-icon {
@@ -542,35 +517,19 @@ body.loading {
   height: 44px;
   border: 1px solid var(--accent-border);
   border-radius: 0;
-  color: #333;
+  color: var(--text-main);
   transition: all 0.3s ease;
-}
-
-[data-theme='dark'] .hire-action-icon {
-  border-color: #444;
-  color: #E0E0E0;
+  text-decoration: none;
 }
 
 .hire-action-icon:hover {
-  border-color: #1a1a1a;
-  background: #f5f5f5;
+  border-color: var(--text-main);
+  background: var(--text-main);
+  color: var(--bg);
 }
 
-[data-theme='dark'] .hire-action-icon:hover {
-  border-color: #aaa;
-  background: #2a2a2a;
-}
-
-.hire-action-whatsapp {
-  border-color: #25D366;
-  background: rgba(37, 211, 102, 0.05);
-}
-.hire-action-whatsapp:hover {
-  background: #25D366;
-  border-color: #25D366;
-}
-.hire-action-whatsapp:hover svg {
-  stroke: #ffffff;
+.hire-action-icon:hover svg {
+  stroke: var(--bg);
 }
 
 /* RESPONSIVENESS */
