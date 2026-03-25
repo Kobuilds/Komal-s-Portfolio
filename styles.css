@@ -735,7 +735,7 @@ body.loading {
   position: relative;
   z-index: 2;
   margin-left: 3vw;
-  transform: translate(-5rem, -12.5rem); /* Shifted up significantly for transition space */
+  transform: translate(-5rem, -7.5rem); /* Lowered slightly as per user request */
 }
 
 .hero-portrait-container {
