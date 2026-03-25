@@ -374,6 +374,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Pluckable Strings Interaction ---
+  const stringTracks = document.querySelectorAll('.string-track');
+  stringTracks.forEach((track, index) => {
+    let canPluck = true;
+    track.addEventListener('mouseenter', () => {
+      if (!canPluck) return;
+      canPluck = false;
+      
+      const wave = track.querySelector('.shockwave');
+      track.classList.add('vibrating');
+      wave.classList.remove('falling');
+      void wave.offsetWidth; // Force Reflow
+      wave.classList.add('falling');
+
+      // Stop vibration early
+      setTimeout(() => track.classList.remove('vibrating'), 300);
+      
+      // Trigger swarm scatter when wave hits bottom (approx 600ms)
+      setTimeout(() => {
+        // Calculate relative X position (0: left string, 1: middle, 2: right)
+        // Ensure it maps nicely to the center of the canvas
+        const relativeX = 0.4 + (index * 0.1); 
+        window.dispatchEvent(new CustomEvent('swarmShockwave', { detail: { xRatio: relativeX } }));
+        canPluck = true; // reset cooldown
+      }, 600);
+    });
+  });
+
   // --- Interactive Data Swarm Initialization ---
   function initDataSwarm() {
     const canvas = document.getElementById('aboutCanvas');
@@ -526,6 +554,27 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.addEventListener('mouseleave', () => {
         mouse.x = -1000;
         mouse.y = -1000;
+    });
+
+    // Listen for Pluckable String Shockwaves
+    window.addEventListener('swarmShockwave', (e) => {
+        const dropX = width * e.detail.xRatio;
+        const dropY = 0; // Top edge of the swarm canvas
+        
+        // Push particles violently away from the drop impact point
+        particles.forEach(p => {
+           let dx = p.x - dropX;
+           let dy = p.y - dropY;
+           let dist = Math.sqrt(dx*dx + dy*dy);
+           if(dist < 400) { // Large blast radius
+               let force = (400 - dist) / 30; // Strong scatter force
+               p.vx += (dx/dist) * force;
+               p.vy += (dy/dist) * force;
+               // Temporarily break base tracking for impact effect
+               p.x += (dx/dist) * (force * 2);
+               p.y += (dy/dist) * (force * 2);
+           }
+        });
     });
 
     resize();
