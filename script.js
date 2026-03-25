@@ -59,6 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
   // --- Halftone Blob on Canvas ---
   const canvas = document.getElementById('halftoneCanvas');
   if (canvas) {
@@ -534,4 +536,33 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   initDataSwarm();
+
+  // --- Dark Mode / Theme Toggle Logic (Moved here for access to functions) ---
+  const themeToggle = document.getElementById('themeToggle');
+  
+  // Check for saved user preference
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  } else {
+    // Check system preference
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      // Refresh Canvases (To pick up new CSS variables)
+      if (typeof drawHalftone === 'function') drawHalftone();
+      if (typeof initDataSwarm === 'function') initDataSwarm();
+    });
+  }
 });

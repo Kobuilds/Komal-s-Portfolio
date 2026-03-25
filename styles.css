@@ -11,12 +11,71 @@
   --text-main: #0A3D32; /* Architectural Deep Emerald Text */
   --text-body: #4A3F3F; /* Sharp Deep Brown */
   --text-white: #FFFFFF;
+  --text-light: rgba(255, 255, 255, 0.6);
   --font-heading: 'Bebas Neue', sans-serif;
   --font-body: 'Space Mono', 'Courier New', monospace;
   --page-border: 10px;
   --transition-speed: 0.4s;
   --accent-rgba: rgba(10, 61, 50, 0.25);
   --accent-border: rgba(10, 61, 50, 0.4);
+}
+
+/* --- Dark Mode --- */
+[data-theme='dark'] {
+  --bg: #121212;
+  --bg-dark: #1a1a1a;
+  --text-main: #E0E0E0;
+  --text-body: #A0A0A0;
+  --text-white: #FFFFFF;
+  --text-light: rgba(255, 255, 255, 0.5);
+  --accent-rgba: rgba(200, 200, 200, 0.12);
+  --accent-border: rgba(200, 200, 200, 0.25);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 5rem;
+  z-index: 1001;
+  background: transparent;
+  border: 1px solid var(--accent-border);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--text-main);
+  fill: none;
+  stroke-width: 2;
+  transition: stroke 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  background: var(--text-main);
+}
+
+.theme-toggle:hover svg {
+  stroke: var(--bg);
+}
+
+/* Hide moon in light, sun in dark */
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+[data-theme='dark'] .theme-toggle .icon-sun { display: block; }
+[data-theme='dark'] .theme-toggle .icon-moon { display: none; }
+
+/* Dark Mode Cursor Override */
+[data-theme='dark'] .cursor-arrow {
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 3L21 13L13 14.5L16 21L13 22.5L9.5 16L3 21V3Z' fill='%23E0E0E0' stroke='%23121212' stroke-width='1.5'/%3E%3C/svg%3E");
 }
 
 
