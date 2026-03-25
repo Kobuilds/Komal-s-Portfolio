@@ -171,41 +171,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealElements.forEach(el => revealObserver.observe(el));
 
-  // --- Project Hover Preview ---
+  // --- Project Click Preview ---
   const workItems = document.querySelectorAll('.work-item');
   
-  // --- Scroll-triggered Project Expansion ---
-  const workObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const item = entry.target;
-        if (!item.classList.contains('expanded')) {
-          workItems.forEach(w => w.classList.remove('expanded'));
-          item.classList.add('expanded');
-        }
-      }
-    });
-  }, {
-    rootMargin: '-35% 0px -35% 0px', // Trigger when item enters the middle 30% of the screen
-    threshold: 0
-  });
-
   workItems.forEach((item) => {
-    workObserver.observe(item);
-
     item.addEventListener('click', (e) => {
       // Prevent collapse when clicking links
       if (e.target.closest('a')) return;
 
       const isExpanded = item.classList.contains('expanded');
-      if (!isExpanded) {
-        workItems.forEach(w => w.classList.remove('expanded'));
-        item.classList.add('expanded');
-      }
       
-      setTimeout(() => {
-        item.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 300);
+      // Close all items
+      workItems.forEach(w => w.classList.remove('expanded'));
+      
+      if (!isExpanded) {
+        // Open the clicked one
+        item.classList.add('expanded');
+        setTimeout(() => {
+          item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 300);
+      }
     });
   });
 
