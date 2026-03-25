@@ -1478,8 +1478,8 @@ body.loading {
 
   /* --- Hero Mobile --- */
   .hero-main-content {
-    flex-direction: column-reverse;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     padding: 12vh 1rem 6rem;
     height: auto;
@@ -1574,7 +1574,22 @@ body.loading {
   }
 
   .work-item {
-    padding: 1.5rem 0.5rem;
+    padding: 2rem 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(10, 61, 50, 0.1);
+  }
+
+  .work-info {
+    width: 100%;
+  }
+
+  .work-tech {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
   }
 
   .contact {
