@@ -384,8 +384,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let width, height;
     let particles = [];
     const config = {
-      particleCount: 250, // Reduced for performance, connections make it look fuller
-      connectionDistance: 60,
+      particleCount: 350, // Increased for larger container
+      connectionDistance: 75,
       mouseRadius: 150,
       baseSpeed: 0.3
     };

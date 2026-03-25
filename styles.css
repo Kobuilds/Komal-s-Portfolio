@@ -934,7 +934,7 @@ body.loading {
   background: transparent;
   border: none;
   box-shadow: none;
-  height: 420px;
+  height: 600px;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -956,7 +956,7 @@ body.loading {
 
 @media (max-width: 1024px) {
   .about-visual-container {
-    height: 350px;
+    height: 450px;
     margin-top: 2rem;
   }
 }
