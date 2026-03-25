@@ -1448,7 +1448,7 @@ body.loading {
 .stack {
   position: relative;
   padding: 3.125rem 2.5rem 10rem; /* Top balanced, Bottom kept for 12.5rem Contact gap */
-  max-width: 1200px; /* More contained for grid stability */
+  max-width: 1600px; /* Aligned with .works and .about */
   margin: 0 auto;
 }
 
@@ -1457,6 +1457,8 @@ body.loading {
   flex-direction: column;
   border-top: 1px solid var(--accent-border);
   border-left: 1px solid var(--accent-border);
+  max-width: 1200px; /* Keeps the grid itself contained */
+  margin: 0 auto;
 }
 
 .stack-row {
