@@ -846,8 +846,7 @@ body.loading {
    HALFTONE TRANSITION
    ============================================ */
 .halftone-divider {
-  height: 300px;
-  background-image: radial-gradient(var(--text-main) 3.5px, transparent 3.5px); /* Bolder dots */
+  height: 150px; /* Reduced from 300px to tighten gap */
   background-size: 36px 36px;
   opacity: 0.6; /* Vibrantly green */
   margin-top: -4rem; /* Moved downward */
@@ -920,13 +919,13 @@ body.loading {
    ABOUT SECTION
    ============================================ */
 .about {
-  padding: 10rem 2.5rem 6rem;
+  padding: 5rem 2.5rem 4rem; /* Reduced from 10rem/6rem */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   max-width: 1600px;
   margin: 0 auto;
-  min-height: 100vh;
+  min-height: 60vh; /* Reduced from 100vh */
   align-items: end;
 }
 
@@ -1045,7 +1044,7 @@ body.loading {
    WORKS SECTION
    ============================================ */
 .works {
-  padding: 6rem 2.5rem 8rem;
+  padding: 4rem 2.5rem 4rem; /* Reduced from 6rem/8rem */
   max-width: 1600px;
   margin: 0 auto;
 }
@@ -1230,7 +1229,7 @@ body.loading {
    MAGIC SECTION
    ============================================ */
 .magic-section {
-  padding: 8rem 2.5rem;
+  padding: 4rem 2.5rem; /* Reduced from 8rem */
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -1301,13 +1300,13 @@ body.loading {
 .contact {
   background: var(--bg-dark);
   color: var(--text-white);
-  padding: 2rem 2.5rem 2rem; /* Further reduced top padding */
+  padding: 1.5rem 2.5rem 1.5rem; /* Further reduced */
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* Shifted from center to top-aligned */
-  min-height: 100vh;
+  min-height: 70vh; /* Reduced from 100vh */
 }
 
 .contact-inner {
@@ -1447,7 +1446,7 @@ body.loading {
    ============================================ */
 .stack {
   position: relative;
-  padding: 8rem 2.5rem 10rem;
+  padding: 5rem 2.5rem 4rem; /* Reduced from 8rem/10rem */
   max-width: 1200px; /* More contained for grid stability */
   margin: 0 auto;
 }
