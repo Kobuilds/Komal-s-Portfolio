@@ -836,11 +836,11 @@ body.loading {
   text-transform: uppercase;
   text-align: right;
   margin-top: -6.5rem; /* Set to exact -6.5rem elevation as per user request */
-  transform: translateX(2rem); 
+  transform: translateX(0.5rem); 
 }
 
 .hero-name.visible {
-  transform: translateX(2rem) translateY(0) !important;
+  transform: translateX(0.5rem) translateY(0) !important;
 }
 /* ============================================
    HALFTONE TRANSITION
