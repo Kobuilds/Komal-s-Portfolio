@@ -383,145 +383,107 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Neural Net Initialization ---
-  function initNeuralNet() {
-    const canvas = document.getElementById('neuralNetCanvas');
-    const display = document.getElementById('neuralDetailContent');
-    if (!canvas || !display) return;
+  // --- Training Pulse (Loss Graph) Initialization ---
+  function initTrainingGraph() {
+    const canvas = document.getElementById('trainingCanvas');
+    const epochEl = document.getElementById('epochValue');
+    const lossEl = document.getElementById('lossValue');
+    if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
     let width, height;
-    const nodes = [];
-    const connections = [];
-    const pulses = [];
-    
-    const nodeData = [
-      { id: 0, layer: 0, title: "CORE_ORIGIN", content: "<h4>Chandigarh, India</h4><p>Raised in the heart of Punjab. Driven by logic, data, and curiosity.</p>" },
-      { id: 1, layer: 0, title: "INPUT_STREAM", content: "<h4>Data Ingestion</h4><p>Specializing in processing messy, real-world signals into clean intelligence.</p>" },
-      { id: 2, layer: 1, title: "ARCH_CV", content: "<h4>Computer Vision</h4><p>Building systems that can see, reason, and interpret visual context with precision.</p>" },
-      { id: 3, layer: 1, title: "ARCH_NLP", content: "<h4>GenAI & LLMs</h4><p>Developing RAG systems and fine-tuning models to understand and generate human logic.</p>" },
-      { id: 4, layer: 2, title: "OUTPUT_V1", content: "<h4>AI Architect</h4><p>The final layer: Turning complex models into production-ready solutions.</p>" }
-    ];
+    let points = [];
+    let epoch = 0;
+    let currentLoss = 1.0;
+    let xOffset = 0;
 
     function resize() {
       const rect = canvas.parentElement.getBoundingClientRect();
       width = canvas.width = rect.width;
       height = canvas.height = rect.height;
-      setupNodes();
+      resetGraph();
     }
 
-    function setupNodes() {
-      nodes.length = 0;
-      connections.length = 0;
-      
-      const layerCounts = [2, 2, 1];
-      const xGap = width / (layerCounts.length + 1);
-      
-      nodeData.forEach(data => {
-        const layerIdx = data.layer;
-        const nodesInLayer = layerCounts[layerIdx];
-        const nodeIdxInLayer = nodeData.filter(n => n.layer === layerIdx).indexOf(data);
-        
-        const x = xGap * (layerIdx + 1);
-        const yGap = height / (nodesInLayer + 1);
-        const y = yGap * (nodeIdxInLayer + 1);
-        
-        nodes.push({ ...data, x, y, radius: 6, hover: false });
-      });
+    function resetGraph() {
+      points = [];
+      epoch = 0;
+      currentLoss = 1.0;
+      xOffset = 0;
+      for (let i = 0; i < 50; i++) {
+        addPoint();
+      }
+    }
 
-      // Connect layers
-      nodes.forEach(n1 => {
-        nodes.forEach(n2 => {
-          if (n2.layer === n1.layer + 1) {
-            connections.push({ from: n1, to: n2 });
-          }
-        });
-      });
+    function addPoint() {
+      const x = points.length > 0 ? points[points.length - 1].x + 10 : 0;
+      // Exponential decay: L = e^(-epoch/200) + noise
+      const baseLoss = Math.exp(-epoch / 150);
+      const noise = (Math.random() - 0.5) * 0.05 * baseLoss;
+      const loss = Math.max(0.01, baseLoss + noise);
+      
+      const y = height - (loss * height * 0.8) - 20;
+      points.push({ x, y, loss });
+      epoch++;
+      currentLoss = loss;
+
+      if (points.length > 100) {
+        points.shift();
+        xOffset -= 10;
+      }
     }
 
     function draw() {
       ctx.clearRect(0, 0, width, height);
       const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--text-main').trim();
 
-      // Draw Connections
-      connections.forEach(conn => {
-        ctx.beginPath();
-        ctx.moveTo(conn.from.x, conn.from.y);
-        ctx.lineTo(conn.to.x, conn.to.y);
-        ctx.strokeStyle = accentColor;
-        ctx.globalAlpha = (conn.from.hover || conn.to.hover) ? 0.6 : 0.15;
-        ctx.lineWidth = (conn.from.hover || conn.to.hover) ? 2 : 1;
-        ctx.stroke();
-      });
-
-      // Draw Pulses
-      if (Math.random() < 0.05) {
-        const conn = connections[Math.floor(Math.random() * connections.length)];
-        pulses.push({ conn, progress: 0, speed: 0.01 + Math.random() * 0.02 });
+      // Draw Grid
+      ctx.beginPath();
+      ctx.strokeStyle = accentColor;
+      ctx.globalAlpha = 0.05;
+      for (let i = 0; i < width; i += 40) {
+        ctx.moveTo(i, 0); ctx.lineTo(i, height);
       }
-
-      for (let i = pulses.length - 1; i >= 0; i--) {
-        const p = pulses[i];
-        p.progress += p.speed;
-        if (p.progress > 1) {
-          pulses.splice(i, 1);
-          continue;
-        }
-        const px = p.conn.from.x + (p.conn.to.x - p.conn.from.x) * p.progress;
-        const py = p.conn.from.y + (p.conn.to.y - p.conn.from.y) * p.progress;
-        ctx.beginPath();
-        ctx.arc(px, py, 2, 0, Math.PI * 2);
-        ctx.fillStyle = accentColor;
-        ctx.globalAlpha = 0.8;
-        ctx.fill();
+      for (let i = 0; i < height; i += 40) {
+        ctx.moveTo(0, i); ctx.lineTo(width, i);
       }
+      ctx.stroke();
 
-      // Draw Nodes
-      nodes.forEach(node => {
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, node.radius + (node.hover ? 4 : 0), 0, Math.PI * 2);
-        ctx.fillStyle = accentColor;
-        ctx.globalAlpha = node.hover ? 1 : 0.4;
-        ctx.fill();
-
-        // Label
-        if (node.hover || width > 400) {
-          ctx.font = '700 8px Arial';
-          ctx.textAlign = 'center';
-          ctx.fillText(node.title, node.x, node.y - 15);
-        }
+      // Draw Curve
+      ctx.beginPath();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = accentColor;
+      ctx.globalAlpha = 1;
+      
+      points.forEach((p, i) => {
+        const drawX = p.x + xOffset;
+        if (i === 0) ctx.moveTo(drawX, p.y);
+        else ctx.lineTo(drawX, p.y);
       });
+      ctx.stroke();
 
+      // Area fill
+      ctx.lineTo(width, height);
+      ctx.lineTo(points[0].x + xOffset, height);
+      ctx.closePath();
+      const gradient = ctx.createLinearGradient(0, 0, 0, height);
+      gradient.addColorStop(0, accentColor.replace('rgb', 'rgba').replace(')', ', 0.2)'));
+      gradient.addColorStop(1, 'transparent');
+      ctx.fillStyle = gradient;
+      ctx.globalAlpha = 0.3;
+      ctx.fill();
+
+      // Updates
+      if (epochEl) epochEl.textContent = Math.floor(epoch);
+      if (lossEl) lossEl.textContent = currentLoss.toFixed(4);
+
+      addPoint();
       requestAnimationFrame(draw);
     }
-
-    canvas.addEventListener('mousemove', (e) => {
-      const rect = canvas.getBoundingClientRect();
-      const mx = e.clientX - rect.left;
-      const my = e.clientY - rect.top;
-      
-      let foundHover = false;
-      nodes.forEach(node => {
-        const dist = Math.sqrt((node.x - mx) ** 2 + (node.y - my) ** 2);
-        if (dist < 20) {
-          if (!node.hover) {
-            node.hover = true;
-            display.innerHTML = node.content;
-            display.classList.add('active');
-          }
-          foundHover = true;
-          canvas.style.cursor = 'pointer';
-        } else {
-          node.hover = false;
-        }
-      });
-      if (!foundHover) canvas.style.cursor = 'default';
-    });
 
     resize();
     window.addEventListener('resize', resize);
     draw();
   }
 
-  initNeuralNet();
+  initTrainingGraph();
 });
