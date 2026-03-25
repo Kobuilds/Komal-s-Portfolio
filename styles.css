@@ -531,17 +531,24 @@ body.loading {
 .top-left-status {
   position: fixed;
   top: 1.5rem;
-  left: 1.5rem;
+  left: 2rem;
   z-index: 100;
   font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 2.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--text-main);
-  opacity: 0.6;
+  opacity: 0.7;
   pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
   transition: opacity 0.3s ease;
+}
+
+.status-time {
+  opacity: 0.6;
 }
 
 /* --- Resume Modal --- */

@@ -328,7 +328,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Top Left Status (Real-time Clock) ---
   const locationTime = document.getElementById('locationTime');
-  if (locationTime) {
+  const statusTime = document.querySelector('.status-time');
+  if (locationTime && statusTime) {
     function updateTime() {
       const now = new Date();
       const options = { 
@@ -338,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hour12: true 
       };
       const timeString = now.toLocaleTimeString('en-US', options).toUpperCase();
-      locationTime.textContent = `PUNJAB, IN — ${timeString}`;
+      statusTime.textContent = timeString;
     }
     
     updateTime(); // Initial call
