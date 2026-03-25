@@ -303,18 +303,15 @@ body.loading {
   z-index: 1001; /* Above everything but modal overlay */
   background: var(--text-main);
   color: var(--bg);
-  font-family: var(--font-body);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 0.85rem;
-  padding: 0.8rem 1.6rem;
+  padding: 0;
+  width: 50px;
+  height: 50px;
   border-radius: 0;
   border: 1px solid var(--accent-border);
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, background 0.3s ease;
 }
@@ -325,8 +322,8 @@ body.loading {
 }
 
 .top-hire-btn svg {
-  width: 16px;
-  height: 16px;
+  width: 22px;
+  height: 22px;
   stroke: var(--bg);
 }
 
