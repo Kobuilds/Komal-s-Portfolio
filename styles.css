@@ -297,7 +297,7 @@ body.loading {
 
 /* ---------- HIRE ME MODAL & BUTTON ---------- */
 .top-hire-btn {
-  position: fixed;
+  position: absolute;
   top: 1.5rem;
   right: 1.5rem;
   z-index: 1001; /* Above everything but modal overlay */
@@ -529,7 +529,7 @@ body.loading {
 
 /* --- Top Left Status (Time/Location) --- */
 .top-left-status {
-  position: fixed;
+  position: absolute;
   top: 1.5rem;
   left: 2rem;
   z-index: 100;
