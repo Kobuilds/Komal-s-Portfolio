@@ -296,4 +296,33 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start with a small initial delay
     setTimeout(addLog, 1500);
   }
+
+  // --- Hire Me Modal Logic ---
+  const openHireModalBtn = document.getElementById('openHireModal');
+  const hireModal = document.getElementById('hireModal');
+  const closeHireModalBtn = document.getElementById('closeHireModal');
+  const hireContactBtn = document.getElementById('hireContactBtn');
+
+  if (openHireModalBtn && hireModal) {
+    openHireModalBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      hireModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    const closeHireModal = () => {
+      hireModal.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+
+    closeHireModalBtn?.addEventListener('click', closeHireModal);
+
+    hireModal.addEventListener('click', (e) => {
+      if (e.target === hireModal) {
+        closeHireModal();
+      }
+    });
+
+    hireContactBtn?.addEventListener('click', closeHireModal);
+  }
 });
