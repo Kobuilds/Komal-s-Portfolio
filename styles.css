@@ -523,9 +523,9 @@ body.loading {
   height: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   padding: 0 5vw;
-  padding-bottom: 25vh;
+  padding-bottom: 10vh;
 }
 
 /* --- Resume Modal --- */
