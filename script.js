@@ -325,4 +325,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     hireContactBtn?.addEventListener('click', closeHireModal);
   }
+
+  // --- Top Left Status (Real-time Clock) ---
+  const locationTime = document.getElementById('locationTime');
+  if (locationTime) {
+    function updateTime() {
+      const now = new Date();
+      const options = { 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit', 
+        hour12: true 
+      };
+      const timeString = now.toLocaleTimeString('en-US', options).toUpperCase();
+      locationTime.textContent = `PUNJAB, IN — ${timeString}`;
+    }
+    
+    updateTime(); // Initial call
+    setInterval(updateTime, 1000); // Update every second
+  }
 });
