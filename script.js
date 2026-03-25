@@ -175,19 +175,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const workItems = document.querySelectorAll('.work-item');
   
   workItems.forEach((item) => {
+    const expandItem = () => {
+      const isExpanded = item.classList.contains('expanded');
+      if (!isExpanded) {
+        workItems.forEach(w => w.classList.remove('expanded'));
+        item.classList.add('expanded');
+      }
+    };
+
+    item.addEventListener('mouseenter', expandItem);
+
     item.addEventListener('click', (e) => {
       // Prevent collapse when clicking links
       if (e.target.closest('a')) return;
 
-      const isExpanded = item.classList.contains('expanded');
-      workItems.forEach(w => w.classList.remove('expanded'));
+      // Ensure it's expanded (handles cases where hover didn't trigger, e.g., mobile)
+      expandItem();
       
-      if (!isExpanded) {
-        item.classList.add('expanded');
-        setTimeout(() => {
-          item.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 300);
-      }
+      setTimeout(() => {
+        item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
     });
   });
 
