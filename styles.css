@@ -1574,22 +1574,25 @@ body.loading {
   }
 
   .work-item {
-    padding: 2rem 0.5rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
+    padding: 2.5rem 0.5rem;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1.5rem;
     border-bottom: 1px solid rgba(10, 61, 50, 0.1);
   }
 
-  .work-info {
-    width: 100%;
+  .work-info, .work-tech {
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .work-tech {
-    width: 100%;
-    justify-content: flex-start;
+    flex-direction: row;
     flex-wrap: wrap;
-    margin-top: 0.5rem;
+    gap: 0.8rem;
+    margin-top: 1rem;
   }
 
   .contact {
@@ -1597,6 +1600,7 @@ body.loading {
   }
 
   .contact-giant {
-    font-size: clamp(3rem, 20vw, 8rem);
+    font-size: clamp(2.5rem, 15vw, 6rem);
+    line-height: 1;
   }
 }
