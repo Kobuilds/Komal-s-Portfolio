@@ -711,7 +711,7 @@ body.loading {
 }
 
 .hero-portrait {
-  height: 42vh;
+  height: 52vh;
   width: auto;
   object-fit: contain;
   filter: grayscale(100%);
@@ -730,12 +730,12 @@ body.loading {
 
 .hero-btn {
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 0.6rem 1.5rem;
+  padding: 0.8rem 2rem;
   background: var(--text-main);
   color: var(--text-white);
   border: 1.5px solid var(--text-main);
