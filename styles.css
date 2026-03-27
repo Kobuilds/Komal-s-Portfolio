@@ -1463,10 +1463,11 @@ body.loading {
 .contact-email-row {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   margin-left: 0;
   width: 100%;
   transform: none;
+  padding-right: 5vw;
 }
 
 .contact-email {
@@ -1477,7 +1478,7 @@ body.loading {
   letter-spacing: 1px;
   opacity: 0.85;
   transition: opacity 0.2s ease;
-  text-align: center;
+  text-align: right;
 }
 
 .contact-email:hover {
@@ -1904,12 +1905,13 @@ body.loading {
 
   .contact-email-row {
     transform: none !important;
-    align-items: flex-start;
+    align-items: flex-end;
+    padding-right: 2rem;
   }
 
   .contact-email {
     font-size: clamp(0.8rem, 3.5vw, 1.2rem);
-    text-align: left;
+    text-align: right;
     word-break: break-all;
   }
 
