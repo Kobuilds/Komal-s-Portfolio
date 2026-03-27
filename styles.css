@@ -948,7 +948,7 @@ body.loading {
   justify-content: center;
   align-items: flex-end;
   font-family: var(--font-heading);
-  font-size: clamp(5rem, 18vw, 24rem);
+  font-size: clamp(4.5rem, 14vw, 20rem);
   line-height: 0.8;
   letter-spacing: -0.02em;
   color: var(--text-main);
