@@ -76,8 +76,16 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.scale(dpr, dpr);
     }
 
+    let lastWidth = window.innerWidth;
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth !== lastWidth) {
+        lastWidth = window.innerWidth;
+        resizeCanvas();
+        drawHalftone();
+      }
+    });
 
     // Draw halftone dots creating a fluid blob shape
     function drawHalftone() {
@@ -126,10 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     drawHalftone();
-    window.addEventListener('resize', () => {
-      resizeCanvas();
-      drawHalftone();
-    });
   }
 
   // --- Dock Nav — Active state based on scroll ---
@@ -401,18 +405,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let mouse = { x: -1000, y: -1000 };
 
+    let lastWidth = window.innerWidth;
+
     function resize() {
       const rect = canvas.parentElement.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
-      // Use logical size for styling, physical size drawing
-      width = rect.width;
-      height = rect.height;
+      
+      const newWidth = rect.width;
+      const newHeight = rect.height;
+
+      // Only re-init particles if width changed (prevents jump on mobile address bar toggle)
+      const widthChanged = newWidth !== width;
+      
+      width = newWidth;
+      height = newHeight;
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
       ctx.scale(dpr, dpr);
-      initParticles();
+
+      if (widthChanged || particles.length === 0) {
+        initParticles();
+      }
     }
 
     class Particle {
