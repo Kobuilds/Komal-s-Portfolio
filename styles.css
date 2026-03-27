@@ -1908,6 +1908,7 @@ body.loading {
     transform: none !important;
     align-items: flex-end;
     padding-right: 2rem;
+    margin-top: 1rem;
   }
 
   .contact-email {
@@ -1919,7 +1920,7 @@ body.loading {
   .contact-edition {
     position: absolute;
     right: 1rem;
-    bottom: 6rem;
+    bottom: 9rem;
     transform: rotate(-90deg) translateY(100%);
     transform-origin: bottom right;
     font-size: 0.7rem;
