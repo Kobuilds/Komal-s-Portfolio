@@ -1680,6 +1680,10 @@ body.loading {
     gap: 1.5rem;
   }
 
+  .hero-portrait-container::after {
+    display: none !important;
+  }
+
   .hero-portrait {
     height: auto;
     max-height: 35vh;
