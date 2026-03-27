@@ -356,6 +356,25 @@ body.loading {
   border-color: var(--bg-dark);
 }
 
+/* --- Dark Mode Dock Overrides --- */
+[data-theme='dark'] .dock-nav {
+  background: rgba(20, 20, 20, 0.85);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='dark'] .dock-item {
+  color: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .dock-item:hover,
+[data-theme='dark'] .dock-item.active {
+  background: var(--text-main);
+  color: var(--bg);
+  border-color: var(--text-main);
+}
+
 /* Tooltip */
 .dock-item::before {
   content: attr(data-tooltip);
