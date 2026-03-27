@@ -38,11 +38,11 @@ This is my personal portfolio — a hand-crafted, pixel-obsessed, over-engineere
 | Feature | Description | Was it worth it? |
 |---------|-------------|------------------|
 | 🎨 **Generative Data Swarm** | 350 particles connected by constellation lines that react to your mouse | Absolutely |
-| 🖱️ **Custom Architectural Cursor** | Hand-drawn SVG arrow that replaces your boring default cursor | Debatable |
-| 📜 **Staggered Strip Preloader** | 10-strip cinematic reveal animation on page load | Yes (it's cool) |
-| 🏗️ **Blueprint Tech Stack** | Grid cards with emerald-tinted icons that come alive on hover | Obviously |
-| 🌾 **Grain Texture Overlay** | Animated film grain because flat backgrounds are boring | Every pixel |
-| 📐 **Sharp-Corner Everything** | `border-radius: 0` is a lifestyle choice | Non-negotiable |
+| 🎈 **Halftone Blob Canvas** | Smooth, organic background animations that follow your scroll | Yes |
+| 🌙 **Adaptive Dark Mode** | A neutral, high-contrast dark theme with a custom toggle | Essential |
+| 📱 **Mobile Stability Fixes** | Prevented animation jumps and layout shifts on mobile scroll | Life-saver |
+| 📐 **Sharp-Corner Design** | Minimalist architectural aesthetic with `border-radius: 0` | Non-negotiable |
+| 🌾 **Grain Texture Overlay** | Animated film grain for a premium, textured feel | Every pixel |
 
 ---
 
@@ -108,11 +108,11 @@ Then visit `http://localhost:8000` and prepare to be architecturally impressed.
 ## 🎨 Design Philosophy
 
 ```
-Aesthetic:     Architectural Minimalism
-Color Palette: Deep Emerald (#0A3D32) + Crisp Ivory (#FCFBF9)
-Typography:    Bebas Neue (headings) + Space Mono (body)
+Aesthetic:     Architectural Minimalism / Industrial Design
+Color Palette: Adaptive (Light: Ivory/Emerald | Dark: Black/Grey/Neutral)
+Typography:    Bebas Neue (Headings) + Space Mono (Body)
 Corners:       Sharp. Always sharp.
-Animations:    Subtle but satisfying
+Animations:    Generative, scroll-synced, and mobile-stabilized
 Vibe:          "Tech studio meets art gallery"
 ```
 
